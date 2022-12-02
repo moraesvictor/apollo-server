@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon -r sucrase/register src/index.js"
   },
   "repository": {
     "type": "git",
@@ -29,6 +30,8 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.31.11",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "prettier": "^2.8.0"
+    "nodemon": "^2.0.20",
+    "prettier": "^2.8.0",
+    "sucrase": "^3.29.0"
   }
 }
