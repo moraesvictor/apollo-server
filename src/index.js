@@ -4,7 +4,8 @@ const server = new ApolloServer({
   // define route type
   typeDefs: gql`
     type Query {
-      user: User
+      user: User!
+      users: [User!]!
     }
 
     type User {
@@ -23,8 +24,23 @@ const server = new ApolloServer({
           id: '12381248123',
           age: 28,
           name: 'Victor Moraes',
-          arrayString: [],
         };
+      },
+      users: () => {
+        return [
+          {
+            payload: 'Hello darkness my old friend',
+            id: '12381248123',
+            age: 28,
+            name: 'Victor Moraes',
+          },
+          {
+            payload: 'Hello darkness my old friend',
+            id: '1238124812123',
+            age: 26,
+            name: 'Thaise Moraes',
+          },
+        ];
       },
     },
   },
