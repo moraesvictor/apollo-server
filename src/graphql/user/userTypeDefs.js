@@ -2,7 +2,13 @@ import { gql } from 'apollo-server';
 
 export const userTypeDefs = gql`
   extend type Query {
-    user: User!
+    # Para passar um argumento para o nosso tipo, devemos primeiramente
+    # ter a necessidade para isso, como vemos em user, que precisamos especificar
+    # a qual usuário estamos fazendo referência.
+    # Uma vez feita essa verificação, é necessário apenas abrir parênteses e passar
+    # o orgumento desejado para dentro de do tipo.
+    # resolver(argumento: tipoDoArgumento): tipoDoResolver
+    user(id: ID!): User!
     users: [User!]!
   }
 
@@ -12,6 +18,6 @@ export const userTypeDefs = gql`
     lastName: String!
     userName: String!
     indexRef: Int!
-    createdAt: Date!
+    createdAt: String!
   }
 `;
