@@ -1,16 +1,17 @@
-const post = () => {
-  return {
-    id: '1',
-    title: 'look at me',
-  };
+const post = async (_, { id }, { getRoute }) => {
+  const response = await getRoute(`${id}`, 'posts');
+
+  const post = await response.json();
+
+  return post;
 };
 
-const posts = () => {
-  return [
-    { id: '1', title: 'look at me' },
-    { id: '2', title: 'look at me' },
-  ];
+const posts = async (_, __, { getRoute }) => {
+  const response = await getRoute(_, 'posts');
+
+  return response.json();
 };
+
 export const postResolvers = {
   Query: {
     post,
