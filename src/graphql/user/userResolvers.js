@@ -2,8 +2,8 @@
 // no seu respectivo TypeDefs.
 // No exemplo abaixo podemos notar o argumento *id*, que foi passado para user(id: ID!): String!...
 // Desta forma o GQL consegue receber o id do usuário e passar para user quando fizer a requisição.
-const user = async (_, { id }, { getUsers }) => {
-  const response = await getUsers(`/${id}`);
+const user = async (_, { id }, { getRoute }) => {
+  const response = await getRoute(`${id}`, 'users');
 
   const user = await response.json();
 
@@ -15,8 +15,8 @@ const user = async (_, { id }, { getUsers }) => {
 // Exemplificando: context: () => { return { magic: "mágica"}}
 // O terceiro parâmetro da minha função compartilhará em todos os resolvers o mesmo valor 'mágica'.
 
-const users = async (_, __, { getUsers }) => {
-  const response = await getUsers();
+const users = async (_, __, { getRoute }) => {
+  const response = await getRoute(_, 'users');
 
   return response.json();
 };
