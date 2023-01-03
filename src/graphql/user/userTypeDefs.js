@@ -9,7 +9,7 @@ export const userTypeDefs = gql`
     # o orgumento desejado para dentro de do tipo.
     # resolver(argumento: tipoDoArgumento): tipoDoResolver
     user(id: ID!): User!
-    users: [User!]!
+    users(input: ApiFiltersInput): [User!]!
   }
 
   type User {

@@ -6,8 +6,13 @@ const post = async (_, { id }, { getRoute }) => {
   return post;
 };
 
-const posts = async (_, __, { getRoute }) => {
-  const response = await getRoute(_, 'posts');
+const posts = async (_, { input }, { getRoute }) => {
+  const apiQueryParams = new URLSearchParams(input);
+
+  const response = await getRoute(
+    _,
+    'posts' + '/?' + apiQueryParams.toString(),
+  );
 
   return response.json();
 };
