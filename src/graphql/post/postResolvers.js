@@ -12,9 +12,23 @@ const posts = async (_, __, { getRoute }) => {
   return response.json();
 };
 
+// O primeiro parâmetro do resolver é o objeto o qual estamos trabalhando,
+// ou seja, ele é o próprio Post nesse caso.
+// Porém, não temos acesso a ele na Query, pois a Query é a entrada dos nossos Resolvers.
+// Quando os desestruturamos e pegamos numa camada mais abaixo, é possível utilizar esses valores do objeto.
+// Esse objeto também pode ser chamado de parent.
+const unixTimestamp = (obj) => {
+  const timestamp = new Date(obj.createdAt).getTime() / 1000;
+
+  return Math.floor(timestamp);
+};
+
 export const postResolvers = {
   Query: {
     post,
     posts,
+  },
+  Post: {
+    unixTimestamp,
   },
 };
