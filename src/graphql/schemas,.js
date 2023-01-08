@@ -4,6 +4,7 @@ import { userResolvers } from './user/userResolvers';
 import { postTypeDefs } from './post/postTypeDefs';
 import { postResolvers } from './post/postResolvers';
 import { ApiFiltersTypedefs } from './api-filters/apiFiltersTypedefs';
+import { ApiFiltersResolvers } from './api-filters/apiFiltersResolvers';
 
 export const rootTypeDefs = gql`
   #  routeTypes
@@ -24,4 +25,9 @@ export const typeDefs = [
   postTypeDefs,
   ApiFiltersTypedefs,
 ];
-export const resolvers = [rootResolvers, userResolvers, postResolvers];
+export const resolvers = [
+  rootResolvers,
+  userResolvers,
+  postResolvers,
+  ApiFiltersResolvers,
+];
