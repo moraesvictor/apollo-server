@@ -3,6 +3,9 @@ const post = async (_, { id }, { getRoute }) => {
 
   const post = await response.json();
 
+  if (typeof post.id === 'undefined')
+    return { statusCode: 404, message: 'Post not found' };
+
   return post;
 };
 
@@ -35,5 +38,13 @@ export const postResolvers = {
   },
   Post: {
     unixTimestamp,
+  },
+  PostResult: {
+    __resolveType: (obj) => {
+      if (typeof obj.statusCode !== 'undefined') return 'PostNotFoundError';
+      if (typeof obj.id !== 'undefined') return 'Post';
+
+      return null;
+    },
   },
 };
