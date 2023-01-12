@@ -22,8 +22,5 @@ const users = async (_, __, { getRoute }) => {
 };
 
 export const userResolvers = {
-  Query: {
-    user,
-    users,
-  },
+  Query: { user, users },
 };
