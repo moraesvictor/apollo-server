@@ -16,12 +16,6 @@ const post = async (_, { id }, { getRoute }) => {
 
   const post = await response.json();
 
-  if (Math.random() > 0.999)
-    return { statusCode: 500, message: 'Post timeout', timeout: 123 };
-
-  if (typeof post.id === 'undefined')
-    return { statusCode: 404, message: 'Post not found', postId: id };
-
   return post;
 };
 
@@ -36,6 +30,15 @@ const posts = async (_, { input }, { getRoute }) => {
   return response.json();
 };
 
+const user = async (obj, _, { getRoute }) => {
+  const response = await getRoute(obj.userId, 'users');
+
+  const user = response.json();
+
+  return user;
+};
+
 export const postResolvers = {
   Query: { post, posts },
+  Post: { user },
 };
