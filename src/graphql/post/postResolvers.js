@@ -70,6 +70,17 @@ const posts = async (_, { input }, { getRoute }) => {
  *
  * assert(promiseA === promiseB)
  *
+ * ### Resumindo o DataLoader nesta aplicação.
+ *
+ * Haverá uma chamada única para posts e uma chamadada única para todos os usários. Dessa forma não exisitirão milhares de requisições...
+ *
+ * Exemplificando:
+ *
+ * GET posts/?
+ * GET users/?id=...[array de usuarios feito através do join]
+ *
+ * Feitas essas requisições, tudo será salvo no cache.
+ *
  * https://www.youtube.com/watch?v=OQTnXNCDywA
  */
 
