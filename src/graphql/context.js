@@ -1,5 +1,4 @@
 import fetch from 'node-fetch';
-
 /**
  * Função que define qual rota será buscada pela pesquisa.
  * @param {*} path é o ID de cada usuário ou post
