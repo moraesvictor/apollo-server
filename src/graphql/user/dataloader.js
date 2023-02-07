@@ -51,12 +51,11 @@ import DataLoader from 'dataloader';
  * https://www.youtube.com/watch?v=OQTnXNCDywA
  */
 
-export const makeUserDataLoader = (getRoute) =>
+export const makeDataLoader = (getRoute, path) =>
   new DataLoader(async (ids) => {
     const urlQuery = ids.join('&id=');
-    const response = await getRoute(urlQuery, 'users');
+    const response = await getRoute(`?id=${urlQuery}`, path);
     const users = await response.json();
 
-    console.log(users);
     return ids.map((id) => users.find((user) => user.id === id));
   });
