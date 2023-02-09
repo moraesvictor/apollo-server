@@ -1,5 +1,3 @@
-import { makeDataLoader } from '../user/dataloader.js';
-
 /**
  *  O primeiro parâmetro do resolver é o objeto o qual estamos trabalhando,
  ou seja, ele é o próprio Post nesse caso.
@@ -32,8 +30,8 @@ const posts = async (_, { input }, { getRoute }) => {
   return response.json();
 };
 
-const user = async (obj, _, { getRoute }) => {
-  return makeDataLoader(getRoute).load(obj.userId);
+const user = async (obj, _, { makeUserDataLoader }) => {
+  return makeUserDataLoader.load(obj.userId);
 };
 
 export const postResolvers = {
