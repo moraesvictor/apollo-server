@@ -2,11 +2,16 @@ import { getRoute } from './utils/utils.js';
 import fetch from 'node-fetch';
 import { makeDataLoader } from './user/dataloader.js';
 
-// const getUsersRoute = (_) => getRoute(fetch)(_, 'users');
-
 export const context = () => {
   return {
-    makeUserDataLoader: makeDataLoader(getRoute('', 'users'), 'users'),
+    makeUserDataLoader: makeDataLoader(
+      () => getRoute(fetch)('', 'users'),
+      'users',
+    ),
+    makePostDataLoader: makeDataLoader(
+      () => getRoute(fetch)('', 'posts'),
+      'posts',
+    ),
     getRoute: getRoute(fetch),
   };
 };
