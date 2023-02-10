@@ -7,4 +7,4 @@
 export const getRoute =
   (fetch) =>
   (path = '', param) =>
-    fetch(`http://localhost:3000/${param}/${path}`);
+    fetch(`${process.env.API_URL}/${param}/${path}`);
