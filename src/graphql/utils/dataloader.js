@@ -56,11 +56,13 @@ export const makeDataLoader = (getRoute, path) =>
     /**
      * Junção dos parâmetros da URL para o caso de USERS.
      */
-    const userUrlQuery = ids.join('&id=');
+    const userUrlQuery = ids.reduce((url, newParam) => url + `&id=${newParam}`);
     /**
      * Junção dos parâmetros da URL para o caso de POSTS.
      */
-    const postUrlQuery = ids.join('&userId=');
+    const postUrlQuery = ids.reduce(
+      (url, newParam) => url + `&userId=${newParam}`,
+    );
 
     /**
      * Resposta da API através da função getRoute para o caso de USERS
