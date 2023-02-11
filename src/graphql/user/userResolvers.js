@@ -21,6 +21,10 @@ const users = async (_, __, { getRoute }) => {
   return response.json();
 };
 
+const post = async (obj, _, { makePostDataLoader }) => {
+  return makePostDataLoader.load(obj.id);
+};
+
 export const userResolvers = {
-  Query: { user, users },
+  Query: { user, users, post },
 };

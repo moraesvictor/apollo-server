@@ -55,7 +55,10 @@ export const makeDataLoader = (getRoute, path) =>
   new DataLoader(async (ids) => {
     const urlQuery = ids.join('&id=');
     const response = await getRoute(`?id=${urlQuery}`, path);
-    const users = await response.json();
+    const postsOrUsers = await response.json();
+    console.log(ids);
 
-    return ids.map((id) => users.find((user) => user.id === id));
+    return ids.map((id) =>
+      postsOrUsers.find((postOrUser) => postOrUser.id === id),
+    );
   });

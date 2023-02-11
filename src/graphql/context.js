@@ -1,6 +1,6 @@
 import { getRoute } from './utils/utils.js';
 import fetch from 'node-fetch';
-import { makeDataLoader } from './user/dataloader.js';
+import { makeDataLoader } from './utils/dataloader.js';
 
 export const context = () => {
   return {
