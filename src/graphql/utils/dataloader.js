@@ -53,12 +53,28 @@ import DataLoader from 'dataloader';
 
 export const makeDataLoader = (getRoute, path) =>
   new DataLoader(async (ids) => {
-    const urlQuery = ids.join('&id=');
-    const response = await getRoute(`?id=${urlQuery}`, path);
-    const postsOrUsers = await response.json();
-    console.log(ids);
+    /**
+     * Junção dos parâmetros da URL para o caso de USERS.
+     */
+    const userUrlQuery = ids.join('&id=');
+    /**
+     * Junção dos parâmetros da URL para o caso de POSTS.
+     */
+    const postUrlQuery = ids.join('&userId=');
 
-    return ids.map((id) =>
-      postsOrUsers.find((postOrUser) => postOrUser.id === id),
-    );
+    /**
+     * Resposta da API através da função getRoute para o caso de USERS
+     */
+    const responseUsers = await getRoute(`?id=${userUrlQuery}`, path);
+    /**
+     * Resposta da API através da função getRoute para o caso de POSTS
+     */
+    const responsePosts = await getRoute(`?iuserId=${postUrlQuery}`, path);
+
+    const users = await responseUsers.json();
+    const posts = await responsePosts.json();
+
+    if (path === 'posts')
+      return ids.map((id) => posts.filter((post) => post.userId === id));
+    return ids.map((id) => users.find((user) => user.id === id));
   });

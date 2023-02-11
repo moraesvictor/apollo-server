@@ -5,11 +5,11 @@ import { makeDataLoader } from './utils/dataloader.js';
 export const context = () => {
   return {
     makeUserDataLoader: makeDataLoader(
-      () => getRoute(fetch)('', 'users'),
+      (_) => getRoute(fetch)(_, 'users'),
       'users',
     ),
     makePostDataLoader: makeDataLoader(
-      () => getRoute(fetch)('', 'posts'),
+      (_) => getRoute(fetch)(_, 'posts'),
       'posts',
     ),
     getRoute: getRoute(fetch),
