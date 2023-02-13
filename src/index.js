@@ -22,6 +22,7 @@ const server = new ApolloServer({
   // Resumindo:
   // Ao invés de criarmos uma função para fazer o fetch, criarmos toda uma esquematização na outra função para transformar aquilo
   // em um JSON e todo esse procedimento padrão. A classe DataSource já nos proporciona os métodos.
+  // Além disso, existem algumas conveniências realcionadas a conversão de URL
   dataSources: () => ({
     postsDataSource: new PostDataSource(),
     userDataSource: new UserDataSource(),
