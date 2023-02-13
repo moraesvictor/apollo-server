@@ -1,5 +1,9 @@
 import { RESTDataSource } from '@apollo/datasource-rest';
 
+/**
+ * Classe que extende o a classe RESTdataSource do Apollo
+ * para realizar os métodos HTTP de uma API Rest e fazer o CRUD de posts de usuários
+ */
 export class PostDataSource extends RESTDataSource {
   constructor() {
     super();
@@ -11,7 +15,6 @@ export class PostDataSource extends RESTDataSource {
   }
 
   async getPost(id) {
-    console.log(id);
-    return this.get(`?id=${id}`);
+    return this.get(id);
   }
 }
