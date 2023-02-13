@@ -2,12 +2,8 @@
 // no seu respectivo TypeDefs.
 // No exemplo abaixo podemos notar o argumento *id*, que foi passado para user(id: ID!): String!...
 // Desta forma o GQL consegue receber o id do usuário e passar para user quando fizer a requisição.
-const user = async (_, { id }, { getRoute }) => {
-  const response = await getRoute(`${id}`, 'users');
-
-  const user = await response.json();
-
-  return user;
+const user = async (_, { id }, { dataSources }) => {
+  return dataSources.userDataSource.getUser(id);
 };
 
 // O terceiro parâmetro da função de um resolver está relacionada diretamente ao
