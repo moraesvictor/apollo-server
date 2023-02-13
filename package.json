@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/moraesvictor/apollo-server#readme",
   "dependencies": {
+    "@apollo/datasource-rest": "^5.0.2",
     "apollo-server": "^3.11.1",
     "dataloader": "^2.1.0",
     "dotenv": "^16.0.3",

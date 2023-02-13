@@ -11,12 +11,8 @@
    return Math.floor(timestamp);
  };
  */
-const post = async (_, { id }, { getRoute }) => {
-  const response = await getRoute(`${id}`, 'posts');
-
-  const post = await response.json();
-
-  return post;
+const post = async (_, { id }, { dataSources }) => {
+  return dataSources.postsDataSource.getPost(id);
 };
 
 const posts = async (_, { input }, { getRoute }) => {
