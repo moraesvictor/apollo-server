@@ -13,7 +13,7 @@ export class UserDataSource extends RESTDataSource {
   /**
    * Função que utiliza o método GET para retornar todos os usuários do sistema.
    * Todos os dados da requisição são salvos por 60s no cache. Dessa forma, se a requisição
-   * for realizada em antes do minuto seguinte, não seria feito um fetch desnecessário.
+   * for realizada antes do minuto consequente, não será feito um fetch desnecessário.
    * @param {*} urlParams filtragem ASC e DESC
    * @returns Todos os usuários do sistema
    */
@@ -26,7 +26,7 @@ export class UserDataSource extends RESTDataSource {
   /**
    * Função que através do método GET e o ID do usuário retorna o usuário pedido.
    * Todos os dados da requisição são salvos por 60s no cache. Dessa forma, se a requisição
-   * for realizada em antes do minuto seguinte, não seria feito um fetch desnecessário.
+   * for realizada antes do minuto consequente, não será feito um fetch desnecessário.
    * @param {*} id
    * @returns O usuário que possui o ID passado.
    */
