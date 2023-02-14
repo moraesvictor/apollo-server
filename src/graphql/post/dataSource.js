@@ -11,10 +11,15 @@ export class PostDataSource extends RESTDataSource {
   }
 
   async getPosts(urlParams = {}) {
-    return this.get('', urlParams);
+    return this.get('', {
+      params: urlParams,
+      cacheOptions: { ttl: 60 },
+    });
   }
 
   async getPost(id) {
-    return this.get(id);
+    return this.get(id, {
+      cacheOptions: { ttl: 60 },
+    });
   }
 }

@@ -12,18 +12,27 @@ export class UserDataSource extends RESTDataSource {
 
   /**
    * Função que utiliza o método GET para retornar todos os usuários do sistema.
-   * @param {*} urlParams filtragem
+   * Todos os dados da requisição são salvos por 60s no cache. Dessa forma, se a requisição
+   * for realizada antes do minuto consequente, não será feito um fetch desnecessário.
+   * @param {*} urlParams filtragem ASC e DESC
    * @returns Todos os usuários do sistema
    */
   async getUsers(urlParams = {}) {
-    return this.get('', urlParams);
+    return this.get('', {
+      params: urlParams,
+      cacheOptions: { ttl: 60 },
+    });
   }
   /**
    * Função que através do método GET e o ID do usuário retorna o usuário pedido.
+   * Todos os dados da requisição são salvos por 60s no cache. Dessa forma, se a requisição
+   * for realizada antes do minuto consequente, não será feito um fetch desnecessário.
    * @param {*} id
-   * @returns
+   * @returns O usuário que possui o ID passado.
    */
   async getUser(id) {
-    return this.get(id);
+    return this.get(id, {
+      cacheOptions: { ttl: 60 },
+    });
   }
 }
