@@ -71,10 +71,9 @@ export const makeDataLoader = (getRoute, path) =>
     /**
      * Resposta da API através da função getRoute para o caso de POSTS
      */
-    const responsePosts = await getRoute(`?iuserId=${postUrlQuery}`, path);
+    const posts = await getRoute(`?iuserId=${postUrlQuery}`, path);
 
     const users = await responseUsers.json();
-    const posts = await responsePosts.json();
 
     if (path === 'posts')
       return ids.map((id) => posts.filter((post) => post.userId === id));

@@ -1,4 +1,5 @@
 import { RESTDataSource } from '@apollo/datasource-rest';
+import { makeDataLoader } from '../utils/dataloader.js';
 
 /**
  * Classe que extende o a classe RESTdataSource do Apollo
@@ -8,6 +9,7 @@ export class PostDataSource extends RESTDataSource {
   constructor() {
     super();
     this.baseURL = `${process.env.API_URL}/posts/`;
+    this.dataLoader = makeDataLoader(this.getPosts.bind(this), 'posts');
   }
 
   async getPosts(urlParams = {}) {
