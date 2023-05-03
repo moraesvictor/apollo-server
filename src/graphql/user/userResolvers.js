@@ -11,14 +11,12 @@ const user = async (_, { id }, { dataSources }) => {
 // Exemplificando: context: () => { return { magic: "mágica"}}
 // O terceiro parâmetro da minha função compartilhará em todos os resolvers o mesmo valor 'mágica'.
 
-const users = async (_, __, { getRoute }) => {
-  const response = await getRoute(_, 'users');
-
-  return response.json();
+const users = async (_, { input }, { dataSources }) => {
+  return dataSources.userDataSource.getUsers(input);
 };
 
-const posts = async (obj, _, { makePostDataLoader }) => {
-  return makePostDataLoader.load(obj.id);
+const posts = async (obj, _, { dataSources }) => {
+  return dataSources.postsDataSource.dataLoader.load(obj.id);
 };
 
 export const userResolvers = {

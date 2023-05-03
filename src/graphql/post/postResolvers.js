@@ -19,8 +19,8 @@ const posts = async (_, { input }, { dataSources }) => {
   return dataSources.postsDataSource.getPosts(input);
 };
 
-const user = async (obj, _, { makeUserDataLoader }) => {
-  return makeUserDataLoader.load(obj.userId);
+const user = async (obj, _, { dataSources }) => {
+  return dataSources.userDataSource.dataLoader.load(obj.userId);
 };
 
 export const postResolvers = {

@@ -48,7 +48,7 @@ import DataLoader from 'dataloader';
  *F
  * Feitas essas requisições, tudo será salvo no cache.
  *
- * https://www.youtube.com/watch?v=OQTnXNCDywA
+ * @see https://www.youtube.com/watch?v=OQTnXNCDywA
  */
 
 export const makeDataLoader = (getRoute, path) =>
@@ -67,13 +67,11 @@ export const makeDataLoader = (getRoute, path) =>
     /**
      * Resposta da API através da função getRoute para o caso de USERS
      */
-    const responseUsers = await getRoute(`?id=${userUrlQuery}`, path);
+    const users = await getRoute(`?id=${userUrlQuery}`, path);
     /**
      * Resposta da API através da função getRoute para o caso de POSTS
      */
-    const posts = await getRoute(`?iuserId=${postUrlQuery}`, path);
-
-    const users = await responseUsers.json();
+    const posts = await getRoute(`?iuserId=${postUrlQuery}`);
 
     if (path === 'posts')
       return ids.map((id) => posts.filter((post) => post.userId === id));
