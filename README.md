@@ -4,7 +4,7 @@
 
 This project is a GraphQL API built with Apollo Server that utilizes a fake API to provide data. The server is designed to provide high performance and scalability, with technologies such as DataSources used to avoid common performance problems like n+1 queries. By using GraphQL, the API offers a flexible and intuitive way for clients to query and manipulate data.
 
-The project includes features such as authentication, caching, and pagination to ensure data is delivered efficiently and securely. The code is written in a modular and maintainable way, making it easy to add new features or modify existing ones.
+The project includes features such as authentication, caching, and batching to ensure data is delivered efficiently and securely. The code is written in a modular and maintainable way, making it easy to add new features or modify existing ones.
 
 Overall, this project offers a powerful and efficient way to provide data to clients, while maintaining a high level of flexibility and scalability.
 
